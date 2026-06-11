@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media Submission ┃ Bikyoon</title>
+<link rel="icon" type="image/png" href="/assets/paw.png">
+<style>
+:root {
+    --purple-main: #6d28d9;
+    --pink-accent: #ed64a6;
+    --bg-light: #fdf2f8;
+    --text-dark: #1f2937;
+    --text-gray: #6b7280;
+}
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+.submission-container { width: 100%; max-width: 900px; text-align: center; padding: 20px; }
+.main-title { font-size: 32px; color: var(--purple-main); font-weight: 900; margin-bottom: 5px; }
+.sub-text { color: var(--text-gray); font-size: 14px; margin-bottom: 30px; }
+.submission-card { background: white; border-radius: 30px; padding: 40px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: left; }
+.tabs-row { display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 25px; }
+.tab-btn { padding: 10px 20px; border-radius: 12px; border: 1px solid #e5e7eb; background: white; cursor: pointer; font-weight: 600; color: var(--text-gray); transition: 0.3s; }
+.tab-btn.active { border-color: var(--pink-accent); color: var(--pink-accent); }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.input-label { display: block; font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; text-transform: uppercase; }
+.login-required { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 15px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.login-text b { color: #1e40af; display: block; font-size: 14px; }
+.login-text span { color: #3b82f6; font-size: 13px; }
+.signin-btn { background: #ec4899; color: white; border: none; padding: 8px 15px; border-radius: 8px; font-weight: 700; cursor: pointer; }
+textarea { width: 100%; height: 120px; border: 1px solid #e5e7eb; border-radius: 12px; padding: 12px; resize: none; box-sizing: border-box; font-family: inherit; }
+.char-count { text-align: left; font-size: 12px; color: var(--text-gray); margin-top: 5px; }
+.drop-zone { border: 2px dashed #e5e7eb; border-radius: 20px; padding: 40px 20px; text-align: center; cursor: pointer; transition: 0.3s; position: relative; }
+.drop-zone:hover, .drop-zone.drag-active { border-color: var(--pink-accent); background: #fff5f7; }
+.upload-icon { font-size: 40px; color: var(--pink-accent); margin-bottom: 10px; }
+.drop-zone p { font-weight: 700; margin: 5px 0; }
+.drop-zone span { font-size: 12px; color: var(--text-gray); }
+.send-btn { width: 100%; background: #f472b6; color: white; border: none; padding: 15px; border-radius: 12px; font-size: 16px; font-weight: 700; margin-top: 30px; cursor: pointer; opacity: 0.6; transition: 0.3s; }
+.send-btn.ready { opacity: 1; cursor: pointer; }
+.rules-list { margin-top: 30px; list-style: none; padding: 0; }
+.rules-list li { font-size: 14px; color: #4b5563; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+#filePreview { display: flex; gap: 10px; justify-content: center; margin-top: 10px; }
+.mini-preview { width: 50px; height: 50px; border-radius: 5px; object-fit: cover; border: 1px solid #ddd; }
+</style>
+</head>
+<body>
+<!-- Navbar placeholder -->
+<div id="navbar-placeholder"></div>
+
+<!-- Load navbar -->
+<link rel="stylesheet" href="/navbar.css">
+<script src="/navbar.js" defer></script>
+<div class="submission-container">
+    <h1 class="main-title">Media Submission</h1>
+    <p class="sub-text">Here you can submit art for Bikyoon to see!</p>
+
+    <div class="submission-card">
+        <div class="tabs-row">
+            <button class="tab-btn active" onclick="setMode('museum', this)">Museum Submission</button>
+            <button class="tab-btn" onclick="setMode('meme', this)">Meme Submission</button>
+        </div>
+
+        <form id="submitForm" onsubmit="handleFinalSubmit(event)">
+            <div class="form-grid">
+                <div class="form-left">
+                    <div class="login-required">
+                        <div class="login-text">
+                            <b>Login Required</b>
+                            <span>Log in to share media</span>
+                        </div>
+                        <button type="button" class="signin-btn">Sign In</button>
+                    </div>
+
+                    <label class="input-label">Message (Optional)</label>
+                    <textarea id="msgInput" maxlength="1000" placeholder="Add a message..." oninput="updateChars()"></textarea>
+                    <div class="char-count"><span id="charNum">0</span>/1000</div>
+                </div>
+
+                <div class="form-right">
+                    <label class="input-label">Upload Media *</label>
+                    <div class="drop-zone" id="dropZone" onclick="fileInput.click()">
+                        <input type="file" id="fileInput" hidden multiple accept="image/png, image/jpeg">
+                        <div class="upload-icon">🎨</div>
+                        <p>Click or drag files here</p>
+                        <span>Up to 3 files • JPEG, PNG • max 5MB each</span>
+                        <div id="filePreview"></div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="send-btn" id="sendBtn" disabled>Send Media</button>
+        </form>
+
+        <ul class="rules-list">
+            <li>🚫 No inappropriate content.</li>
+            <li>🧠 Only artwork you own or have permission for.</li>
+            <li>🔄 Do not spam images.</li>
+            <li>Do not send AI images.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+let currentMode = 'museum';
+const fileInput = document.getElementById('fileInput');
+const sendBtn = document.getElementById('sendBtn');
+const dropZone = document.getElementById('dropZone');
+
+function setMode(mode, btn) {
+    currentMode = mode;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+}
+
+function updateChars() {
+    document.getElementById('charNum').innerText = document.getElementById('msgInput').value.length;
+}
+
+// File Preview + Enable Button
+fileInput.addEventListener('change', () => {
+    const files = Array.from(fileInput.files);
+    const preview = document.getElementById('filePreview');
+    preview.innerHTML = "";
+
+    if (files.length > 3) { alert("Maximum 3 files allowed."); fileInput.value = ""; sendBtn.disabled = true; sendBtn.classList.remove('ready'); return; }
+
+    files.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = e => {
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.className = "mini-preview";
+            preview.appendChild(img);
+        }
+        reader.readAsDataURL(file);
+    });
+
+    sendBtn.disabled = files.length === 0;
+    sendBtn.classList.toggle('ready', files.length > 0);
+});
+
+// Drag & Drop
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-active'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-active'));
+dropZone.addEventListener('drop', e => {
+    e.preventDefault();
+    dropZone.classList.remove('drag-active');
+    fileInput.files = e.dataTransfer.files;
+    fileInput.dispatchEvent(new Event('change'));
+});
+
+// Form Submit → Upload to server
+async function handleFinalSubmit(e) {
+    e.preventDefault();
+    const msg = document.getElementById('msgInput').value || "no-message";
+    const files = fileInput.files;
+
+    if(files.length===0){ alert("Upload something first!"); return; }
+
+    const formData = new FormData();
+    formData.append("message", msg);
+    formData.append("mode", currentMode);
+    for(let i=0;i<files.length;i++) formData.append("media", files[i]);
+
+    try {
+        const res = await fetch("http://localhost:3000/upload", { method:"POST", body: formData });
+        const data = await res.json();
+        if(data.success){
+            alert("Uploaded successfully 🔥");
+            document.getElementById('submitForm').reset();
+            document.getElementById('filePreview').innerHTML = "";
+            sendBtn.disabled = true;
+            sendBtn.classList.remove('ready');
+        }
+    } catch(err){
+        alert("Upload failed ❌");
+        console.error(err);
+    }
+}
+</script>
+</body>
+</html>

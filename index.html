@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tana ┃ تانا </title>
+
+<link rel="icon" type="image/png" href="assets/paww.png">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* Moving Looped Background Setup - Now White Canvas */
+body{
+font-family:Arial,sans-serif;
+background-color: #ffffff;
+color: #2b0c1e;
+overflow-x:hidden;
+position: relative;
+}
+
+body::before {
+content: "";
+position: fixed;
+top: 0;
+left: 0;
+width: 200%;
+height: 200%;
+background-image: url('assets/a24bb8c6eebc0a577c3b363628ec8f3c.jpg');
+background-repeat: repeat;
+background-size: 500px auto;
+opacity: 0.12; /* Slightly lowered opacity so it looks clean against white */
+z-index: -1;
+animation: backgroundScroll 35s linear infinite;
+pointer-events: none;
+}
+
+@keyframes backgroundScroll {
+0% { transform: translate(0, 0); }
+100% { transform: translate(-250px, -250px); }
+}
+
+nav{
+position:fixed;top:20px;left:50%;transform:translateX(-50%);
+width:90%;max-width:1200px;
+background:rgba(255, 105, 180, 0.1);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255, 105, 180, 0.3);
+border-radius:20px;
+padding:15px 30px;
+display:flex;justify-content:space-between;align-items:center;
+z-index:100;
+box-shadow: 0 8px 32px rgba(255, 105, 180, 0.08);
+}
+nav ul{display:flex;gap:30px;list-style:none}
+nav a{color:#2b0c1e;text-decoration:none;font-weight: bold;transition: color 0.2s;}
+nav a:hover{color: #ff409f;}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:120px 8%;
+}
+.hero-text h1{
+font-size:clamp(60px,8vw,110px);
+line-height:1;
+color: #2b0c1e;
+text-shadow: 0 0 20px rgba(255, 105, 180, 0.15);
+}
+.hero-text span{color:#ff409f}
+.hero-text p{
+margin-top:20px;
+font-size:24px;
+color:#4a1231;
+}
+.buttons{
+margin-top:30px;
+display:flex;
+gap:15px;
+}
+.btn{
+padding:16px 30px;
+border:none;
+border-radius:16px;
+cursor:pointer;
+font-size:18px;
+font-weight: bold;
+transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn:hover {
+transform: translateY(-2px);
+}
+.btn-primary{
+background: linear-gradient(135deg, #ff69b4, #ff409f);
+color:white;
+box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+}
+.btn-secondary{
+background:rgba(255, 105, 180, 0.08);
+color:#2b0c1e;
+border:1px solid rgba(255, 105, 180, 0.4);
+backdrop-filter: blur(5px);
+}
+.hero-image img{
+width:min(700px,90vw);
+filter: drop-shadow(0 0 30px rgba(255, 105, 180, 0.15));
+}
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+margin-top:40px;
+max-width:700px;
+}
+.card{
+background:rgba(255, 235, 245, 0.85);
+border:1px solid rgba(255, 105, 180, 0.3);
+backdrop-filter:blur(10px);
+padding:25px;
+border-radius:20px;
+text-align:center;
+color: #2b0c1e;
+box-shadow: 0 4px 15px rgba(255, 105, 180, 0.08);
+}
+.card h2 { color: #ff409f; }
+.card small { color: #5c1b3e; font-weight: bold; }
+
+.countdown{
+padding:100px 8% 40px;
+text-align:center;
+}
+.count-grid{
+display:grid;
+grid-template-columns:repeat(4,160px);
+justify-content:center;
+gap:20px;
+margin-top:40px;
+}
+
+/* --- Community Section --- */
+.community-section {
+padding: 60px 8% 40px;
+max-width: 1200px;
+margin: 0 auto;
+}
+.community-header {
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+margin-bottom: 35px;
+flex-wrap: wrap;
+gap: 15px;
+}
+.community-header .sub-tag {
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 2px;
+color: #cc338b;
+font-weight: bold;
+margin-bottom: 5px;
+display: block;
+}
+.community-header h2 {
+font-size: clamp(32px, 4vw, 48px);
+font-weight: bold;
+color: #2b0c1e;
+}
+.community-header .lang-meta {
+font-size: 13px;
+color: #ba257b;
+background: rgba(255, 105, 180, 0.12);
+padding: 4px 12px;
+border-radius: 20px;
+border: 1px solid rgba(255, 105, 180, 0.3);
+font-weight: bold;
+}
+.community-grid-top {
+display: grid;
+grid-template-columns: 2fr 1fr 1fr;
+gap: 20px;
+margin-bottom: 20px;
+}
+.community-grid-mid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 20px;
+margin-bottom: 20px;
+}
+.comm-card {
+background: rgba(255, 238, 246, 0.85);
+border: 1px solid rgba(255, 105, 180, 0.25);
+backdrop-filter: blur(8px);
+border-radius: 20px;
+padding: 30px 25px;
+text-decoration: none;
+color: #2b0c1e;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 12px;
+transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+position: relative;
+box-shadow: 0 4px 12px rgba(255, 105, 180, 0.05);
+}
+.comm-card:hover {
+transform: translateY(-5px);
+border-color: #ff409f;
+background: rgba(255, 220, 238, 0.95);
+box-shadow: 0 10px 25px rgba(255, 105, 180, 0.15);
+}
+.comm-label {
+font-size: 20px;
+font-weight: bold;
+letter-spacing: 0.5px;
+}
+.comm-subtext {
+font-size: 13px;
+color: #a82e74;
+margin-top: -4px;
+font-weight: 500;
+}
+.comm-icon {
+font-size: 28px;
+margin-bottom: 2px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+}
+.comm-btn-group {
+display: flex;
+gap: 10px;
+margin-top: 5px;
+}
+.comm-inline-btn {
+background: linear-gradient(135deg, #ff69b4, #ff409f);
+color: white;
+padding: 8px 18px;
+border-radius: 12px;
+font-size: 13px;
+font-weight: bold;
+text-decoration: none;
+box-shadow: 0 3px 8px rgba(255, 64, 159, 0.2);
+transition: transform 0.2s, background 0.2s;
+}
+.comm-inline-btn:hover {
+background: #d6247d;
+transform: scale(1.03);
+}
+
+/* Custom Tint Overlays tailored for light backgrounds */
+.tint-youtube:hover { background: rgba(255, 0, 70, 0.05); border-color: rgba(255, 0, 70, 0.4); }
+.tint-twitch:hover { background: rgba(145, 70, 255, 0.05); border-color: rgba(145, 70, 255, 0.4); }
+.tint-discord:hover { background: rgba(88, 101, 242, 0.05); border-color: rgba(88, 101, 242, 0.4); }
+
+/* --- Who is Tana Section --- */
+.profile-section {
+padding: 60px 8% 60px;
+max-width: 1200px;
+margin: 0 auto;
+}
+.profile-header {
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+margin-bottom: 30px;
+flex-wrap: wrap;
+gap: 20px;
+}
+.profile-header .sub-tag {
+font-size: 12px;
+text-transform: uppercase;
+letter-spacing: 2px;
+color: #cc338b;
+font-weight: bold;
+}
+.profile-header h2 {
+font-size: clamp(36px, 5vw, 56px);
+line-height: 1.1;
+color: #2b0c1e;
+}
+.quote-box {
+background: linear-gradient(135deg, #fff0f6, #ffe3f0);
+border: 2px solid #ff409f;
+padding: 15px 25px;
+border-radius: 15px;
+max-width: 380px;
+text-align: right;
+position: relative;
+box-shadow: 0 5px 15px rgba(255, 105, 180, 0.1);
+}
+.quote-box::before {
+content: "“";
+position: absolute;
+left: 15px;
+top: -5px;
+font-size: 40px;
+color: #ff409f;
+font-family: serif;
+}
+.quote-text {
+font-size: 18px;
+color: #4a1231;
+font-weight: bold;
+direction: rtl;
+}
+.milestone-bar {
+background: linear-gradient(90deg, #2b0c1e, #4a1231);
+color: #ffffff;
+border-radius: 16px;
+padding: 20px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 30px;
+box-shadow: 0 6px 20px rgba(43, 12, 30, 0.15);
+}
+.milestone-left {
+display: flex;
+align-items: center;
+gap: 15px;
+}
+.icon-circle {
+background: rgba(255, 255, 255, 0.15);
+color: #ff94cc;
+width: 45px;
+height: 45px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 20px;
+}
+.milestone-info h3 {
+font-size: 16px;
+font-weight: 700;
+}
+.milestone-info p {
+font-size: 13px;
+color: #ffd6eb;
+}
+.milestone-date {
+background: #ff409f;
+color: white;
+font-size: 12px;
+font-weight: bold;
+padding: 6px 12px;
+border-radius: 6px;
+}
+.profile-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 25px;
+}
+.info-card {
+background: rgba(255, 238, 246, 0.85);
+border: 1px solid rgba(255, 105, 180, 0.25);
+backdrop-filter: blur(8px);
+border-radius: 20px;
+padding: 30px 25px;
+display: flex;
+flex-direction: column;
+gap: 20px;
+color: #2b0c1e;
+box-shadow: 0 4px 15px rgba(255, 105, 180, 0.04);
+}
+.card-header-title {
+font-size: 22px;
+font-weight: bold;
+border-bottom: 1px solid rgba(255,105,180,.3);
+padding-bottom: 15px;
+margin-bottom: 5px;
+color: #cc338b;
+}
+.info-group {
+display: flex;
+flex-direction: column;
+gap: 4px;
+}
+.grid-2col {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 15px;
+}
+.label {
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 1px;
+color: #8a255c;
+font-weight: bold;
+}
+.value {
+font-size: 18px;
+font-weight: bold;
+}
+.mbti-badge {
+background: #ff409f;
+color: white;
+padding: 4px 10px;
+border-radius: 6px;
+font-size: 12px;
+display: inline-block;
+width: fit-content;
+font-weight: bold;
+}
+.pets-box {
+background: rgba(255, 105, 180, 0.08);
+border-radius: 12px;
+padding: 15px;
+border: 1px solid rgba(255, 105, 180, 0.2);
+}
+.info-card.pink-variant {
+background: linear-gradient(145deg, #ff69b4, #ff409f);
+border: none;
+color: white;
+box-shadow: 0 8px 25px rgba(255, 105, 180, 0.2);
+}
+.pink-variant .card-header-title {
+border-bottom: 1px solid rgba(255,255,255,.3);
+color: white;
+}
+.pink-variant .label {
+color: rgba(255,255,255,.85);
+}
+.pink-box {
+background: rgba(255,255,255,.2);
+border-radius: 12px;
+padding: 12px;
+}
+.pink-box-dark {
+background: rgba(0,0,0,.12);
+}
+.vtuber-row {
+display: flex;
+align-items: center;
+gap: 15px;
+}
+.vtuber-icon {
+background: rgba(255, 105, 180, 0.12);
+color: #cc338b;
+width: 40px;
+height: 40px;
+border-radius: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 18px;
+border: 1px solid rgba(255, 105, 180, 0.25);
+}
+.status-badge {
+background: #2b0c1e;
+color: #ffffff;
+font-size: 11px;
+font-weight: bold;
+padding: 4px 10px;
+border-radius: 6px;
+text-transform: uppercase;
+display: inline-block;
+margin-top: 2px;
+}
+
+/* --- Latest Videos Section --- */
+.videos-section {
+padding: 60px 8% 40px;
+max-width: 1200px;
+margin: 0 auto;
+}
+.vid-header {
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+border-bottom: 1px solid rgba(255, 105, 180, 0.3);
+padding-bottom: 15px;
+margin-bottom: 30px;
+}
+.vid-header-left span {
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 2px;
+color: #cc338b;
+font-weight: bold;
+margin-bottom: 5px;
+display: block;
+}
+.vid-header-left h2 {
+font-size: clamp(32px, 4vw, 48px);
+font-weight: bold;
+color: #2b0c1e;
+}
+.view-more {
+background: rgba(255, 105, 180, 0.1);
+border: 1px solid rgba(255, 105, 180, 0.3);
+color: #2b0c1e;
+padding: 12px 24px;
+border-radius: 30px;
+text-decoration: none;
+font-size: 14px;
+font-weight: bold;
+display: inline-flex;
+align-items: center;
+gap: 8px;
+transition: background 0.3s, border-color 0.3s, transform 0.2s, color 0.2s;
+}
+.view-more:hover {
+background: #ff409f;
+border-color: #ff409f;
+color: white;
+transform: translateY(-2px);
+}
+.video-grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 20px;
+}
+.video-card {
+background: rgba(255, 238, 246, 0.85);
+border: 1px solid rgba(255, 105, 180, 0.25);
+backdrop-filter: blur(8px);
+border-radius: 16px;
+padding: 12px;
+cursor: pointer;
+display: flex;
+flex-direction: column;
+position: relative;
+transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+box-shadow: 0 4px 12px rgba(255, 105, 180, 0.04);
+}
+.video-card:hover {
+transform: translateY(-5px);
+border-color: #ff409f;
+box-shadow: 0 8px 20px rgba(255, 105, 180, 0.15);
+}
+.thumb-container {
+width: 100%;
+aspect-ratio: 16/9;
+border-radius: 10px;
+overflow: hidden;
+position: relative;
+background: #eaeaea;
+margin-bottom: 15px;
+}
+.thumb-container img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+.latest-badge {
+position: absolute;
+top: -5px;
+left: -5px;
+background: linear-gradient(135deg, #ff4a5a, #ff1a30);
+color: white;
+font-size: 10px;
+font-weight: bold;
+padding: 4px 10px;
+border-radius: 6px;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+box-shadow: 0 4px 10px rgba(255, 74, 90, 0.3);
+z-index: 2;
+}
+.video-info {
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+.video-title {
+font-size: 15px;
+font-weight: bold;
+line-height: 1.4;
+color: #2b0c1e;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+overflow: hidden;
+text-align: right;
+direction: rtl;
+padding: 0 4px;
+}
+.video-stats {
+font-size: 12px;
+color: #7a2253;
+font-weight: 600;
+display: flex;
+align-items: center;
+gap: 5px;
+padding: 0 4px 4px;
+}
+
+.banner{
+background: linear-gradient(90deg, #ff69b4, #ff94cc, #ff69b4);
+color:white;
+padding:20px;
+font-size:26px;
+font-weight:bold;
+text-align:center;
+letter-spacing: 2px;
+text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* --- Video Modal Player Styles --- */
+#videoModal {
+display: none;
+position: fixed;
+top: 0; left: 0; width: 100%; height: 100%;
+background: rgba(15, 5, 12, 0.85);
+z-index: 1000;
+justify-content: center;
+align-items: center;
+backdrop-filter: blur(8px);
+}
+.modal-content {
+position: relative;
+width: 85%;
+max-width: 900px;
+aspect-ratio: 16/9;
+background: black;
+border-radius: 16px;
+border: 1px solid rgba(255, 105, 180, 0.3);
+overflow: hidden;
+box-shadow: 0 0 30px rgba(255, 105, 180, 0.3);
+}
+.close-modal {
+position: absolute;
+top: 15px;
+right: 20px;
+color: white;
+font-size: 35px;
+font-weight: bold;
+cursor: pointer;
+z-index: 1010;
+transition: color 0.2s;
+}
+.close-modal:hover {
+color: #ff69b4;
+}
+
+/* --- Footer Area --- */
+.footer-container {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 60px 8%;
+border-top: 1px solid rgba(255, 105, 180, 0.3);
+margin-top: 40px;
+background: rgba(255, 238, 246, 0.6);
+backdrop-filter: blur(5px);
+}
+.footer-left p {
+color: #611640;
+font-size: 14px;
+margin-top: 5px;
+font-weight: 500;
+}
+.footer-logo {
+font-size: 22px;
+font-weight: bold;
+color: #2b0c1e;
+}
+.name-purple { color: #ff409f; }
+.footer-right {
+display: flex;
+gap: 25px;
+}
+.footer-link {
+color: #611640;
+text-decoration: none;
+font-size: 14px;
+font-weight: bold;
+transition: color 0.2s;
+}
+.footer-link:hover {
+color: #ff409f;
+}
+
+@media(max-width:900px){
+.hero{flex-direction:column;text-align:center; padding-top: 160px;}
+.stats{grid-template-columns:repeat(2,1fr)}
+.count-grid{grid-template-columns:repeat(2,140px)}
+.community-grid-top {grid-template-columns: 1fr;}
+.community-grid-mid {grid-template-columns: repeat(2, 1fr);}
+.profile-grid {grid-template-columns: 1fr;}
+.profile-header {flex-direction: column; align-items: center; text-align: center;}
+.milestone-bar {flex-direction: column; gap: 15px; text-align: center;}
+.milestone-left {flex-direction: column;}
+.video-grid {grid-template-columns: repeat(2, 1fr);}
+.vid-header {flex-direction: column; align-items: center; gap: 15px; text-align: center;}
+.footer-container {flex-direction: column; gap: 20px; text-align: center;}
+}
+@media(max-width:500px){
+.community-grid-mid {grid-template-columns: 1fr;}
+.video-grid {grid-template-columns: 1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div style="display: flex; align-items: center; gap: 8px;">
+    <img src="assets/paww.png" alt="Paw" style="width: 24px; height: 24px; object-fit: contain;">
+    <b>Tana ┃ تانا</b>
+</div>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Updates</a></li>
+<li><a href="#">Gallery</a></li>
+<li><a href="#">Merch</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+<div class="hero-text">
+<h1>Hello,<br>I'm <span>Tana.</span></h1>
+<p>The Forest Fox Spirit.<br>Debuting soon!</p>
+
+<div class="buttons">
+<button class="btn btn-primary">Notify Me 🔔</button>
+<button class="btn btn-secondary">Latest Updates 🌸</button>
+</div>
+
+<div class="stats">
+<div class="card"><h2>2026</h2><small>Debut</small></div>
+<div class="card">
+    <h2>13.8M</h2>
+    <small>Views</small>
+</div>
+<div class="card">
+    <h2>23.8K</h2>
+    <small>Subscribers</small>
+</div>
+<div class="card"><h2>New Website</h2><small>Updates</small></div>
+</div>
+</div>
+
+<div class="hero-image">
+<img src="assets/tana chan.png" alt="Tana ┃ تانا">
+</div>
+</section>
+
+<div class="banner">
+🍄 DEBUTING IN 2025 • FOX MAGIC UNLEASHED • STAY TUNED 🌸
+</div>
+
+<section class="countdown">
+<h2 style="font-size:48px;margin-bottom:10px;color: #2b0c1e;">Video Incoming</h2>
+<p style="color: #4a1231;">Something cozy. Something beautifully chaotic.</p>
+
+<div class="count-grid">
+<div class="card"><h1 id="days">00</h1><small>DAYS</small></div>
+<div class="card"><h1 id="hours">00</h1><small>HOURS</small></div>
+<div class="card"><h1 id="mins">00</h1><small>MINUTES</small></div>
+<div class="card"><h1 id="secs">00</h1><small>SECONDS</small></div>
+</div>
+</section>
+
+<section class="community-section">
+    <div class="community-header">
+        <div class="com-header-left">
+            <span class="sub-tag">The Fox Den</span>
+            <h2>Find Me Everywhere</h2>
+        </div>
+        <div class="lang-meta">Arabic • English </div>
+    </div>
+
+    <div class="community-grid-top">
+        <div class="comm-card tint-youtube" style="align-items: flex-start; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="comm-icon" style="margin-bottom: 0;">
+                    <img src="assets/youtube.png" alt="YouTube Icon" style="width: 28px; height: 28px; object-fit: cover; border-radius: 50%;">
+                </div>
+                <div class="comm-label">YouTube</div>
+            </div>
+            <div class="comm-btn-group">
+                <a href="https://youtube.com/channel/UCvYQ6tFjH19Mlye27Hli2bQ" target="_blank" class="comm-inline-btn">TanaChan 🦊</a>
+            </div>
+        </div>
+
+        <a href="#" target="_blank" class="comm-card tint-twitch">
+            <img src="assets/twitch.png" alt="X / twitch" style="width: 28px; height: 28px; object-fit: cover; border-radius: 50%;">
+            <div class="comm-label">Twitch</div>
+            <div class="comm-subtext">Live Streams</div>
+        </a>
+
+        <a href="#" target="_blank" class="comm-card tint-discord">
+            <img src="assets/discord.png" alt="X / Discord" style="width: 28px; height: 28px; object-fit: cover; border-radius: 50%;">
+            <div class="comm-label">Discord</div>
+            <div class="comm-subtext">Fox Den Chat</div>
+        </a>
+    </div>
+
+    <div class="community-grid-mid">
+        <a href="#" target="_blank" class="comm-card">
+            <div class="comm-icon">
+                <img src="assets/twitter.png" alt="X / Twitter" style="width: 28px; height: 28px; object-fit: cover; border-radius: 50%;">
+            </div>
+            <div class="comm-label" style="font-size: 16px;">X / Twitter</div>
+        </a>
+        <a href="#" target="_blank" class="comm-card">
+            <div class="comm-icon">
+                <img src="assets/tiktok.png" alt="TikTok" style="width: 28px; height: 28px; object-fit: cover; border-radius: 50%;">
+            </div>
+            <div class="comm-label" style="font-size: 16px;">TikTok</div>
+        </a>
+        <a href="#" target="_blank" class="comm-card">
+            <div class="comm-icon">
+                <img src="assets/instagram.png" alt="Instagram" style="width: 28px; height: 28px; object-fit: cover; border-radius: 50%;">
+            </div>
+            <div class="comm-label" style="font-size: 16px;">Instagram</div>
+        </a>
+        <a href="#" target="_blank" class="comm-card">
+            <div class="comm-icon">
+                <img src="assets/pinterest.png" alt="Pinterest" style="width: 28px; height: 28px; object-fit: cover; border-radius: 50%;">
+            </div>
+            <div class="comm-label" style="font-size: 16px;">Pinterest</div>
+        </a>
+    </div>
+</section>
+
+<section class="profile-section">
+    <div class="profile-header">
+        <div>
+            <div class="sub-tag">SINCE 2025 / ARABIC VTUBING</div>
+            <h2>Who is <span style="color:#ff409f;">Tana?</span></h2>
+        </div>
+        <div class="quote-box">
+            <p class="quote-text">"أهلاً بكم في غابتي السحرية"</p>
+        </div>
+    </div>
+
+    <div class="milestone-bar">
+        <div class="milestone-left">
+            <div class="icon-circle">🍄</div>
+            <div class="milestone-info">
+                <h3>YouTube Milestones</h3>
+                <p>First Fox-Spirit </p>
+            </div>
+        </div>
+        <div class="milestone-date">Jul 12 2025</div>
+    </div>
+
+    <div class="profile-grid">
+        <div class="info-card">
+            <div class="card-header-title">🦊 Fox Profile</div>
+            
+            <div class="info-group">
+                <div class="label">Nickname</div>
+                <div class="value">Tana / تانا</div>
+            </div>
+
+            <div class="grid-2col">
+                <div class="info-group">
+                    <div class="label">Age</div>
+                    <div class="value">(Fox Years!)</div>
+                </div>
+                <div class="info-group">
+                    <div class="label">Height</div>
+                    <div class="value">Mind your business</div>
+                </div>
+            </div>
+
+            <div class="info-group">
+                <div class="label">Birthday</div>
+                <div class="value">I Forgot</div>
+            </div>
+
+            <div class="info-group">
+                <div class="label">MBTI</div>
+                <div class="value"><span class="mbti-badge">ENTP</span></div>
+            </div>
+
+            <div class="pets-box">
+                <div class="label">Companion</div>
+                <div class="value" style="font-size:15px; font-weight:normal; margin-top:4px;">1 Forest Fox</div>
+            </div>
+        </div>
+
+        <div class="info-card pink-variant">
+            <div class="card-header-title">🍄 Forest Favorites</div>
+            
+            <div class="pink-box">
+                <div class="label">Obsessions</div>
+                <div class="value">Wild Mushrooms & Pastels 🌸</div>
+            </div>
+
+            <div class="grid-2col">
+                <div class="pink-box">
+                    <div class="label">Drink</div>
+                    <div class="value">Matcha Latte 🍵</div>
+                </div>
+                <div class="pink-box">
+                    <div class="label">Sweet</div>
+                    <div class="value">Mochi Ice Cream</div>
+                </div>
+            </div>
+
+            <div class="pink-box pink-box-dark">
+                <div class="label">Aesthetics</div>
+                <div class="value" style="font-size:14px; font-weight:normal;">Glowing Fungi - Kitsune Myths - Cute Pink Overlays</div>
+            </div>
+
+            <div class="pink-box">
+                <div class="label">Favorite Games</div>
+                <div class="value" style="font-size:15px;">GENSHIN IMPACT</div>
+            </div>
+
+            <div class="pink-box">
+                <div class="label">Hobbies</div>
+                <div class="value">Go through the Woods</div>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <div class="card-header-title">📺 The VTuber Life</div>
+            
+            <div class="vtuber-row">
+                <div class="vtuber-icon">🍄</div>
+                <div class="info-group">
+                    <div class="label">Debut</div>
+                    <div class="value">Jul 12 2025</div>
+                </div>
+            </div>
+
+            <div class="vtuber-row">
+                <div class="vtuber-icon">🗣️</div>
+                <div class="info-group">
+                    <div class="label">Languages</div>
+                    <div class="value">Arabic, English</div>
+                </div>
+            </div>
+
+            <div class="vtuber-row">
+                <div class="vtuber-icon">🦊</div>
+                <div class="info-group">
+                    <div class="label">Fanbase Name</div>
+                    <div class="value">Moneky.D.Tana</div>
+                </div>
+            </div>
+
+            <div class="vtuber-row">
+                <div class="vtuber-icon">✨</div>
+                <div class="info-group">
+                    <div class="label">Agency / Status</div>
+                    <div class="value"><span class="status-badge">Independent</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="videos-section">
+    <div class="vid-header">
+        <div class="vid-header-left">
+            <span>Highlights</span>
+            <h2>Latest Videos</h2>
+        </div>
+        <a href="https://youtube.com/channel/UCvYQ6tFjH19Mlye27Hli2bQ" target="_blank" class="view-more">View More →</a>
+    </div>
+
+    <div class="video-grid" id="video-grid">
+        <p style="color:#7a2253; grid-column:1/-1; text-align:center; padding: 20px 0; font-weight: bold;">Sprouting video links...</p>
+    </div>
+    
+    <p style="text-align: center; color:#ff409f; font-weight:bold; margin-top: 40px;">#tanachan</p>
+</section>
+
+<div id="videoModal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeVideo()">&times;</span>
+        <iframe id="videoPlayer" width="100%" height="100%" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
+
+<footer class="footer-container">
+    <div class="footer-left">
+        <div class="footer-logo">
+            <span class="name-purple">Tana</span><span>Chan</span>
+        </div>
+        <p>© 2026 Tana Studio. All rights reserved.</p>
+    </div>
+
+    <div class="footer-right">
+        <a href="/legal/terms.html" class="footer-link">Terms of Service</a>
+        <a href="/legal/privacy.html" class="footer-link">Privacy Policy</a>
+    </div>
+</footer>
+
+<script>
+// --- Countdown Timer Code (1.5 Days / 36 Hours from Now) ---
+const now = new Date();
+// Add 36 hours in milliseconds to the current time
+const target = new Date(now.getTime() + (36 * 60 * 60 * 1000));
+
+function updateCountdown(){
+    const current = new Date();
+    const diff = target - current;
+
+    // If the countdown finishes, stop it at 0
+    if (diff <= 0) {
+        document.getElementById("days").textContent = 0;
+        document.getElementById("hours").textContent = 0;
+        document.getElementById("mins").textContent = 0;
+        document.getElementById("secs").textContent = 0;
+        return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const mins = Math.floor((diff / (1000 * 60)) % 60);
+    const secs = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("days").textContent = days;
+    document.getElementById("hours").textContent = hours;
+    document.getElementById("mins").textContent = mins;
+    document.getElementById("secs").textContent = secs;
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+
+// --- YouTube API Engine ---
+const API_KEY = "AIzaSyD1VpmtO9c5wesakjCPWhvkm-d_BTibaRM"; 
+const CHANNEL_ID = "UCvYQ6tFjH19Mlye27Hli2bQ"; 
+
+async function fetchVideos() {
+    const videoGrid = document.getElementById('video-grid');
+    const url = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=4&type=video`;
+    
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        if (!data.items || data.items.length === 0) {
+            videoGrid.innerHTML = '<p style="color:#aaa; grid-column:1/-1; text-align:center;">No videos found.</p>';
+            return;
+        }
+
+        videoGrid.innerHTML = ''; 
+        
+        for (let i = 0; i < data.items.length; i++) {
+            const video = data.items[i];
+            const videoId = video.id.videoId;
+            const stats = await fetchVideoStats(videoId);
+            
+            const card = `
+                <div class="video-card" onclick="playVideo('${videoId}')">
+                    <div class="thumb-container">
+                        ${i === 0 ? '<div class="latest-badge">Latest Upload</div>' : ''}
+                        <img src="${video.snippet.thumbnails.high.url}" alt="thumbnail">
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">🍄 ${video.snippet.title}</div>
+                        <div class="video-stats">👁️ ${formatViews(stats)} views</div>
+                    </div>
+                </div>
+            `;
+            videoGrid.innerHTML += card;
+        }
+    } catch (error) { 
+        console.error("Error fetching YouTube videos:", error); 
+        videoGrid.innerHTML = '<p style="color:#aaa; grid-column:1/-1; text-align:center;">Failed to connect to YouTube Feed.</p>';
+    }
+}
+
+async function fetchVideoStats(id) {
+    try {
+        const url = `https://www.googleapis.com/youtube/v3/videos?key=${API_KEY}&id=${id}&part=statistics`;
+        const response = await fetch(url);
+        const data = await response.json();
+        return data.items[0].statistics.viewCount;
+    } catch (e) {
+        return 0;
+    }
+}
+
+function formatViews(num) {
+    if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+    if (num >= 1000) return (num / 1000).toFixed(0) + 'k';
+    return num;
+}
+
+function playVideo(id) {
+    document.getElementById('videoPlayer').src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+    document.getElementById('videoModal').style.display = 'flex';
+}
+
+function closeVideo() {
+    document.getElementById('videoModal').style.display = 'none';
+    document.getElementById('videoPlayer').src = '';
+}
+
+if (API_KEY !== "YOUR_YOUTUBE_API_KEY") {
+    fetchVideos();
+}
+</script>
+
+</body>
+</html>

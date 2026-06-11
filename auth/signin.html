@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bikyoon - Sign In</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #f4eaea;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      width: 360px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    /* ✅ LOGO FIXED */
+    .logo {
+      font-weight: bold;
+      color: #c2185b;
+      font-size: 20px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .logo img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain; /* no cropping */
+    }
+
+    h2 {
+      margin: 10px 0 5px;
+      color: #4a148c;
+    }
+
+    p {
+      color: #777;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      margin-bottom: 12px;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn img {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+    }
+
+    .google {
+      background: #fff;
+    }
+
+    .discord {
+      background: #eef1ff;
+      border-color: #c5caff;
+    }
+
+    .divider {
+      margin: 15px 0;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .small-text {
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 15px;
+    }
+
+    .magic-btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      background: #e91e63;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(233,30,99,0.3);
+    }
+
+    .checkbox {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #777;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      justify-content: center;
+    }
+
+    .footer {
+      font-size: 11px;
+      color: #aaa;
+      margin-top: 20px;
+    }
+
+    .footer a {
+      color: #e91e63;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    
+    <!-- ✅ CLEAN LOGO -->
+    <div class="logo">
+      <img src="/assets/paw.png" alt="logo">
+      Bikyoon
+    </div>
+
+    <h4>Sign In</h4>
+    <h2>Welcome Back</h2>
+    <p>Sign in to access your dashboard</p>
+
+    <!-- ✅ BUTTONS WITH IMAGES -->
+    <button class="btn google">
+      <img src="/assets/google.png" alt="">
+      Continue with Google
+    </button>
+
+    <button class="btn discord">
+      <img src="/assets/discord.png" alt="">
+      Continue with Discord
+    </button>
+
+    <div class="divider">Or continue with</div>
+
+    <input type="email" placeholder="you@example.com">
+    <div class="small-text">We'll send you a secure login link</div>
+
+    <button class="magic-btn">Send Magic Link</button>
+
+    <div class="checkbox">
+      <input type="checkbox">
+      Trust this device (skip 30-day re-verification)
+    </div>
+
+    <div class="footer">
+      By signing in, you agree to our 
+      <a href="#">Terms of Service</a> and 
+      <a href="#">Privacy Policy</a>
+    </div>
+
+  </div>
+
+</body>
+</html>
