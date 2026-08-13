@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>wiqo wiqo — The Museum</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/paww.png">
+
+    <!-- Navbar -->
+    <link rel="stylesheet" href="/navbar.css">
+    <script src="/navbar.js" defer></script>
+
+    <style>
+
+        :root {
+            --bg-color: #fdf6f9;
+            --card-bg: #fff0f5;
+            --card-hover: #fbe4ee;
+            --border-color: #fcd5e4;
+
+            --primary-accent: #ff3399;
+            --secondary-accent: #ff2a85;
+
+            --text-main: #1d121c;
+            --text-muted: #856e79;
+
+            --badge-bg: #ff2a85;
+            --pill-bg: #fde8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .museum-hero {
+            padding: 130px 8% 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section-label {
+            display: block;
+
+            color: var(--primary-accent);
+
+            font-size: 0.8rem;
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+
+            margin-bottom: 6px;
+        }
+
+        .museum-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+
+            margin-bottom: 8px;
+
+            color: var(--text-main);
+        }
+
+        .museum-hero p {
+            color: var(--text-muted);
+
+            font-size: 1.05rem;
+
+            max-width: 600px;
+
+            margin-bottom: 24px;
+        }
+
+        /* =====================================================
+           FILTERS
+        ===================================================== */
+
+        .filter-container {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            border-bottom: 1px solid var(--border-color);
+
+            padding-bottom: 16px;
+            margin-bottom: 35px;
+
+            overflow-x: auto;
+        }
+
+        .filter-btn {
+            background: #fff;
+
+            border: 1px solid var(--border-color);
+
+            color: var(--text-muted);
+
+            font-size: 0.9rem;
+            font-weight: 600;
+
+            padding: 8px 18px;
+
+            border-radius: 30px;
+
+            cursor: pointer;
+
+            white-space: nowrap;
+
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover {
+            color: var(--primary-accent);
+            background: var(--pill-bg);
+        }
+
+        .filter-btn.active {
+            background: var(--primary-accent);
+
+            color: #fff;
+
+            border-color: var(--primary-accent);
+        }
+
+        .item-count {
+            margin-left: auto;
+
+            align-self: center;
+
+            color: var(--text-muted);
+
+            font-size: 0.85rem;
+            font-weight: 600;
+
+            white-space: nowrap;
+        }
+
+        /* =====================================================
+           GRID
+        ===================================================== */
+
+        .museum-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fill, minmax(260px, 1fr));
+
+            gap: 20px;
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding: 0 8% 60px;
+
+            width: 100%;
+
+            flex-grow: 1;
+        }
+
+        /* =====================================================
+           CARD
+        ===================================================== */
+
+        .card {
+            background: var(--card-bg);
+
+            border: 1px solid var(--border-color);
+
+            border-radius: 20px;
+
+            padding: 12px;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background 0.25s ease;
+
+            display: flex;
+
+            flex-direction: column;
+
+            cursor: pointer;
+
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 10px 25px rgba(255, 51, 153, 0.12);
+
+            background: var(--card-hover);
+        }
+
+        /* =====================================================
+           IMAGE
+        ===================================================== */
+
+        .card-preview {
+            position: relative;
+
+            width: 100%;
+
+            aspect-ratio: 16 / 10;
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: #ffe3ee;
+        }
+
+        .card-preview img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover .card-preview img {
+            transform: scale(1.04);
+        }
+
+        /* =====================================================
+           FEATURED BADGE
+        ===================================================== */
+
+        .featured-badge {
+            position: absolute;
+
+            top: 8px;
+            left: 8px;
+
+            background: var(--badge-bg);
+
+            color: #fff;
+
+            padding: 4px 9px;
+
+            border-radius: 6px;
+
+            font-size: 0.65rem;
+
+            font-weight: 800;
+
+            letter-spacing: 0.5px;
+
+            text-transform: uppercase;
+
+            z-index: 2;
+        }
+
+        /* =====================================================
+           CARD INFO
+        ===================================================== */
+
+        .card-info {
+            padding: 12px 4px 4px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 4px;
+        }
+
+        .card-title {
+            font-size: 0.98rem;
+
+            font-weight: 700;
+
+            color: var(--text-main);
+
+            line-height: 1.3;
+        }
+
+        .card-category {
+            font-size: 0.75rem;
+
+            color: var(--primary-accent);
+
+            font-weight: 600;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.7px;
+        }
+
+        /* =====================================================
+           PLACEHOLDER
+        ===================================================== */
+
+        .placeholder-art {
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffd1e3,
+                    #fcc2d7
+                );
+
+            color: var(--primary-accent);
+
+            font-size: 2.2rem;
+        }
+
+        /* =====================================================
+           EMPTY STATE
+        ===================================================== */
+
+        .empty-state {
+            grid-column: 1 / -1;
+
+            text-align: center;
+
+            padding: 80px 20px;
+
+            color: var(--text-muted);
+        }
+
+        .empty-state-icon {
+            font-size: 50px;
+
+            margin-bottom: 15px;
+        }
+
+        .empty-state h2 {
+            color: var(--text-main);
+
+            margin-bottom: 8px;
+        }
+
+        /* =====================================================
+           FULLSCREEN OVERLAY
+        ===================================================== */
+
+        #mediaOverlay {
+            display: none;
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100vw;
+            height: 100vh;
+
+            background:
+                rgba(253, 246, 249, 0.97);
+
+            backdrop-filter: blur(12px);
+
+            z-index: 9999;
+        }
+
+        .close-btn {
+            position: absolute;
+
+            top: 25px;
+            right: 30px;
+
+            color: var(--text-main);
+
+            font-size: 2.5rem;
+
+            cursor: pointer;
+
+            z-index: 100;
+
+            line-height: 1;
+
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover {
+            color: var(--primary-accent);
+        }
+
+        /* =====================================================
+           SCROLL VIEWER
+        ===================================================== */
+
+        .scroll-container {
+            height: 100vh;
+
+            overflow-y: scroll;
+
+            scroll-snap-type: y mandatory;
+
+            scrollbar-width: none;
+        }
+
+        .scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .exhibit-slide {
+            width: 100%;
+            height: 100vh;
+
+            scroll-snap-align: start;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide-media {
+            max-width: 85%;
+            max-height: 80vh;
+
+            object-fit: contain;
+
+            border-radius: 16px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(255, 51, 153, 0.15);
+        }
+
+        .slide-details-bar {
+            position: absolute;
+
+            bottom: 30px;
+            left: 40px;
+
+            z-index: 10;
+
+            color: var(--text-main);
+
+            max-width: 400px;
+
+            background:
+                rgba(255, 255, 255, 0.88);
+
+            backdrop-filter: blur(8px);
+
+            padding: 12px 18px;
+
+            border-radius: 14px;
+
+            border: 1px solid var(--border-color);
+        }
+
+        .slide-details-bar h3 {
+            font-size: 1.05rem;
+        }
+
+        .slide-details-bar span {
+            color: var(--primary-accent);
+
+            font-size: 0.75rem;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+        }
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 768px) {
+
+            .museum-hero {
+                padding:
+                    110px 5% 20px;
+            }
+
+            .museum-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .museum-grid {
+                padding:
+                    0 5% 50px;
+            }
+
+            .filter-container {
+                padding-bottom: 12px;
+            }
+
+            .item-count {
+                display: none;
+            }
+
+            .slide-details-bar {
+                left: 20px;
+                bottom: 20px;
+                right: 20px;
+
+                max-width: none;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+
+    <header class="museum-hero">
+
+        <span class="section-label">
+            EXHIBITS
+        </span>
+
+        <h1>
+            The Museum
+        </h1>
+
+        <p>
+            Fan art, archives, community creations,
+            and memories of wiqo wiqo.
+        </p>
+
+        <!-- FILTERS -->
+
+        <div class="filter-container">
+
+            <button
+                class="filter-btn active"
+                onclick="filterGallery('All', this)">
+                All Exhibits
+            </button>
+
+            <button
+                class="filter-btn"
+                onclick="filterGallery('Fan Art', this)">
+                Fan Art
+            </button>
+
+            <button
+                class="filter-btn"
+                onclick="filterGallery('Memes', this)">
+                Memes
+            </button>
+
+            <button
+                class="filter-btn"
+                onclick="filterGallery('Highlights', this)">
+                Highlights
+            </button>
+
+            <span
+                class="item-count"
+                id="itemCount">
+                0 Exhibits
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         MUSEUM GRID
+    ===================================================== -->
+
+    <main
+        class="museum-grid"
+        id="museumGrid">
+    </main>
+
+
+    <!-- =====================================================
+         FULLSCREEN VIEWER
+    ===================================================== -->
+
+    <div id="mediaOverlay">
+
+        <div
+            class="close-btn"
+            onclick="closeOverlay()">
+            &times;
+        </div>
+
+        <div
+            class="scroll-container"
+            id="snapContainer">
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <div id="global-footer"></div>
+
+    <script src="/footer.js" defer></script>
+
+
+    <!-- =====================================================
+         MUSEUM JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+        /*
+        ========================================================
+        MUSEUM ITEMS
+
+        Put your images inside:
+
+        /assets/museum/
+
+        Example:
+
+        /assets/museum/tana1.jpg
+        /assets/museum/tana2.png
+        /assets/museum/meme1.jpg
+
+        Then put the exact filename here.
+        ========================================================
+        */
+
+        const itemsData = [
+
+            {
+                id: "WQ-01",
+
+                title: "Chibi Wiqo Smile 🌸",
+
+                category: "Fan Art",
+
+                icon: "🎨",
+
+                image:
+                    "/assets/museum/HD-wallpaper-tbhk-hanako-kun-hanako-kun-jibaku-shounen-hanako-kun.jpg",
+
+                isFeatured: true
+            },
+
+
+            {
+                id: "WQ-02",
+
+                title: "Cute partner Image",
+
+                category: "Highlights",
+
+                icon: "✨",
+
+                image:
+                    "/assets/museum/images(5).png",
+
+                isFeatured: false
+            },
+
+
+            {
+                id: "WQ-03",
+
+                title: "Best Meme",
+
+                category: "Memes",
+
+                icon: "🎮",
+
+                image:
+                    "/assets/museum/images (6).png",
+
+                isFeatured: false
+            },
+
+
+            {
+                id: "WQ-04",
+
+                title: "Midnight Vibe 🌙",
+
+                category: "Fan Art",
+
+                icon: "🌙",
+
+                image:
+                    "/assets/museum/images(4).png",
+
+                isFeatured: false
+            },
+
+
+            {
+                id: "WQ-05",
+
+                title: "Sakura Season Outfit 🌸",
+
+                category: "Fan Art",
+
+                icon: "🌸",
+
+                image:
+                    "/assets/museum/images (7).png",
+
+                isFeatured: false
+            },
+
+
+            {
+                id: "WQ-06",
+
+                title: "Pixel Art 👾",
+
+                category: "Memes",
+
+                icon: "👾",
+
+                image:
+                    "/assets/museum/61fa9e4893e59d98f8dc4eaf88d21875.png",
+
+                isFeatured: false
+            }
+
+        ];
+
+
+        /*
+        ========================================================
+        ACTIVE ITEMS
+
+        This contains the currently visible category.
+        ========================================================
+        */
+
+        let activeItems = [...itemsData];
+
+
+        /*
+        ========================================================
+        RENDER GRID
+
+        This was missing from your previous version.
+        ========================================================
+        */
+
+        function renderGrid(data) {
+
+            const grid =
+                document.getElementById("museumGrid");
+
+            const count =
+                document.getElementById("itemCount");
+
+
+            /* Update item count */
+
+            count.textContent =
+                `${data.length} Exhibits`;
+
+
+            /* No items */
+
+            if (!data.length) {
+
+                grid.innerHTML = `
+                    <div class="empty-state">
+
+                        <div class="empty-state-icon">
+                            🌸
+                        </div>
+
+                        <h2>
+                            No Exhibits Yet
+                        </h2>
+
+                        <p>
+                            Nothing has been added to
+                            this category yet.
+                        </p>
+
+                    </div>
+                `;
+
+                return;
+            }
+
+
+            /*
+            Generate cards
+            */
+
+            grid.innerHTML =
+                data.map((item, index) => {
+
+                    return `
+
+                        <div
+                            class="card"
+                            onclick="openOverlay(${index})"
+                        >
+
+                            <div class="card-preview">
+
+                                ${
+                                    item.isFeatured
+
+                                    ?
+
+                                    `
+                                    <span
+                                        class="featured-badge">
+                                        FEATURED
+                                    </span>
+                                    `
+
+                                    :
+
+                                    ""
+                                }
+
+
+                                ${
+                                    item.image
+
+                                    ?
+
+                                    `
+                                    <img
+                                        src="${item.image}"
+                                        alt="${item.title}"
+                                        loading="lazy"
+
+                                        onerror="
+                                            this.style.display='none';
+                                            this.parentElement
+                                            .querySelector('.image-error')
+                                            .style.display='flex';
+                                        "
+                                    >
+
+                                    <div
+                                        class="placeholder-art image-error"
+                                        style="display:none;"
+                                    >
+                                        ${item.icon}
+                                    </div>
+                                    `
+
+                                    :
+
+                                    `
+                                    <div
+                                        class="placeholder-art"
+                                    >
+                                        ${item.icon}
+                                    </div>
+                                    `
+                                }
+
+                            </div>
+
+
+                            <div class="card-info">
+
+                                <div class="card-category">
+                                    ${item.category}
+                                </div>
+
+                                <div class="card-title">
+                                    ${item.title}
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }).join("");
+        }
+
+
+        /*
+        ========================================================
+        FILTER GALLERY
+        ========================================================
+        */
+
+        function filterGallery(
+            category,
+            button
+        ) {
+
+            /*
+            Remove active state
+            */
+
+            document
+                .querySelectorAll(".filter-btn")
+                .forEach(btn => {
+
+                    btn.classList.remove("active");
+
+                });
+
+
+            /*
+            Activate clicked button
+            */
+
+            button.classList.add("active");
+
+
+            /*
+            Filter items
+            */
+
+            if (category === "All") {
+
+                activeItems =
+                    [...itemsData];
+
+            } else {
+
+                activeItems =
+                    itemsData.filter(
+                        item =>
+                            item.category === category
+                    );
+
+            }
+
+
+            /*
+            Render filtered cards
+            */
+
+            renderGrid(activeItems);
+        }
+
+
+        /*
+        ========================================================
+        OPEN FULLSCREEN VIEWER
+        ========================================================
+        */
+
+        function openOverlay(startIndex) {
+
+            const overlay =
+                document.getElementById(
+                    "mediaOverlay"
+                );
+
+            const container =
+                document.getElementById(
+                    "snapContainer"
+                );
+
+
+            /*
+            Show overlay
+            */
+
+            overlay.style.display =
+                "block";
+
+
+            /*
+            Prevent background scrolling
+            */
+
+            document.body.style.overflow =
+                "hidden";
+
+
+            /*
+            Generate slides
+            */
+
+            container.innerHTML =
+
+                activeItems.map(
+                    (item, index) => {
+
+                        return `
+
+                            <div
+                                class="exhibit-slide"
+                                id="slide-${index}"
+                            >
+
+                                ${
+                                    item.image
+
+                                    ?
+
+                                    `
+                                    <img
+                                        src="${item.image}"
+                                        class="slide-media"
+                                        alt="${item.title}"
+
+                                        onerror="
+                                            this.style.display='none';
+                                            this.parentElement
+                                            .querySelector('.slide-placeholder')
+                                            .style.display='flex';
+                                        "
+                                    >
+
+                                    <div
+                                        class="placeholder-art slide-media slide-placeholder"
+                                        style="
+                                            display:none;
+                                            width:320px;
+                                            height:320px;
+                                        "
+                                    >
+                                        ${item.icon}
+                                    </div>
+                                    `
+
+                                    :
+
+                                    `
+                                    <div
+                                        class="placeholder-art slide-media"
+                                        style="
+                                            width:320px;
+                                            height:320px;
+                                        "
+                                    >
+                                        ${item.icon}
+                                    </div>
+                                    `
+                                }
+
+
+                                <div
+                                    class="slide-details-bar"
+                                >
+
+                                    <span>
+                                        ${item.category}
+                                    </span>
+
+                                    <h3>
+                                        ${item.title}
+                                    </h3>
+
+                                </div>
+
+                            </div>
+
+                        `;
+
+                    }
+                ).join("");
+
+
+            /*
+            Scroll to selected item
+            */
+
+            const selectedSlide =
+                document.getElementById(
+                    `slide-${startIndex}`
+                );
+
+
+            if (selectedSlide) {
+
+                selectedSlide.scrollIntoView({
+                    behavior: "instant"
+                });
+
+            }
+
+        }
+
+
+        /*
+        ========================================================
+        CLOSE OVERLAY
+        ========================================================
+        */
+
+        function closeOverlay() {
+
+            const overlay =
+                document.getElementById(
+                    "mediaOverlay"
+                );
+
+
+            overlay.style.display =
+                "none";
+
+
+            document.body.style.overflow =
+                "auto";
+
+
+            /*
+            Clear slides
+            */
+
+            document.getElementById(
+                "snapContainer"
+            ).innerHTML = "";
+        }
+
+
+        /*
+        ========================================================
+        CLOSE WITH ESC KEY
+        ========================================================
+        */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    closeOverlay();
+
+                }
+
+            }
+        );
+
+
+        /*
+        ========================================================
+        INITIAL RENDER
+
+        IMPORTANT:
+        This is what makes the cards appear.
+        ========================================================
+        */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function() {
+
+                renderGrid(
+                    activeItems
+                );
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>

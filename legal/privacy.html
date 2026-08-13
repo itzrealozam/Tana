@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Privacy Policy — Tana Studio</title>
+    <link rel="icon" type="image/png" href="/assets/paww.png">
+
+    <!-- Load navbar dependencies -->
+    <link rel="stylesheet" href="/navbar.css">
+    <script src="/navbar.js" defer></script>
+
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #2b0c1e;
+            --text-muted: #611640;
+            --accent-pink: #ff409f;
+            --accent-light: rgba(255, 105, 180, 0.1);
+            --border-color: rgba(255, 105, 180, 0.3);
+            --card-bg: rgba(255, 238, 246, 0.6);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding: 120px 20px 60px;
+        }
+
+        .privacy-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(255, 105, 180, 0.08);
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--accent-pink);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 24px;
+            transition: transform 0.2s;
+        }
+
+        .back-link:hover {
+            transform: translateX(-4px);
+        }
+
+        header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .last-updated {
+            font-size: 13px;
+            color: var(--accent-pink);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        section h2 {
+            font-size: 20px;
+            color: var(--accent-pink);
+            margin-top: 28px;
+            margin-bottom: 12px;
+        }
+
+        section h3 {
+            font-size: 17px;
+            color: var(--text-main);
+            margin-top: 22px;
+            margin-bottom: 8px;
+        }
+
+        section p {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-size: 15px;
+        }
+
+        section ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            color: var(--text-muted);
+        }
+
+        section li {
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding-top: 100px;
+            }
+
+            .privacy-container {
+                padding: 24px;
+            }
+
+            header h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="privacy-container">
+
+        <a href="/index.html" class="back-link">
+            ← Back to Home
+        </a>
+
+        <header>
+            <h1>Privacy Policy</h1>
+            <div class="last-updated">
+                Last updated: March 2026
+            </div>
+        </header>
+
+        <section>
+
+            <h2>1. Overview</h2>
+
+            <p>
+                Tana Studio ("we", "our", "us") operates the Tana website
+                and Tana Studio desktop application. This Privacy Policy
+                explains what information we collect, how we use it, and
+                your rights regarding that information.
+            </p>
+
+
+            <h2>2. Information We Collect</h2>
+
+            <h3>Account Information</h3>
+
+            <p>
+                When you create a Tana account, we collect your email
+                address, username, and optionally your Discord identity
+                if you authenticate via Discord OAuth.
+            </p>
+
+
+            <h3>Tana Studio — Local Data</h3>
+
+            <p>
+                Tana Studio is a desktop application that processes video
+                files locally on your device. Video files, project files,
+                and AI-generated subtitles are stored on your local
+                machine only and are never uploaded to our servers.
+            </p>
+
+
+            <h3>Third-Party OAuth Tokens</h3>
+
+            <p>
+                When you connect a third-party account (YouTube, TikTok,
+                Instagram, Facebook) to Tana Studio, the resulting OAuth
+                access tokens are encrypted using your operating system's
+                secure storage and stored locally on your device only.
+                These tokens are never transmitted to Tana servers.
+            </p>
+
+
+            <h3>Usage Data</h3>
+
+            <p>
+                We may collect anonymous usage analytics (e.g., feature
+                usage frequency, crash reports) to improve the application.
+                This data does not include personal information or video
+                content.
+            </p>
+
+
+            <h2>3. How We Use Your Information</h2>
+
+            <ul>
+                <li>To provide and improve Tana services and Tana Studio</li>
+                <li>To authenticate you and maintain your account session</li>
+                <li>To upload content to third-party platforms on your explicit request</li>
+                <li>To diagnose technical issues and improve application stability</li>
+                <li>To communicate service updates when necessary</li>
+            </ul>
+
+
+            <h2>4. Third-Party Platforms</h2>
+
+            <p>
+                Tana Studio integrates with the following platforms at
+                your direction:
+            </p>
+
+            <ul>
+                <li>
+                    <strong>TikTok</strong> — via TikTok Login Kit and
+                    Content Posting API. We request only
+                    <strong>video.publish</strong> and
+                    <strong>video.upload</strong> scopes to enable direct
+                    video publishing.
+                </li>
+
+                <li>
+                    <strong>YouTube</strong> — via Google OAuth 2.0.
+                    We request only the minimum scopes required to
+                    upload videos to your YouTube channel.
+                </li>
+
+                <li>
+                    <strong>Instagram / Facebook</strong> — via Meta
+                    OAuth. We request only the permissions needed to
+                    publish Reels to your connected account.
+                </li>
+            </ul>
+
+            <p>
+                You may revoke these connections at any time from within
+                Tana Studio or directly from each platform's account
+                settings.
+            </p>
+
+
+            <h2>5. Data Sharing</h2>
+
+            <p>
+                We do not sell, trade, or rent your personal information
+                to third parties. We do not share your data with any
+                third party except:
+            </p>
+
+            <ul>
+                <li>
+                    When required by law or in response to valid legal
+                    process
+                </li>
+
+                <li>
+                    With the platform APIs you explicitly authorize
+                    solely for the purpose of completing your requested
+                    upload
+                </li>
+            </ul>
+
+
+            <h2>6. Data Retention</h2>
+
+            <p>
+                Account data is retained as long as your account is active.
+                You may request deletion of your account and associated
+                data at any time. OAuth tokens stored locally by Tana
+                Studio can be removed by disconnecting accounts within
+                the app.
+            </p>
+
+
+            <h2>7. Security</h2>
+
+            <p>
+                We implement industry-standard security measures to
+                protect your information. OAuth tokens in Tana Studio
+                are encrypted using OS-level secure storage
+                (Electron safeStorage API). Sensitive credentials are
+                never stored in plain text.
+            </p>
+
+
+            <h2>8. Children's Privacy</h2>
+
+            <p>
+                Our services are not directed to children under the age
+                of 13. We do not knowingly collect personal information
+                from children under 13.
+            </p>
+
+
+            <h2>9. Changes to This Policy</h2>
+
+            <p>
+                We may update this Privacy Policy from time to time.
+                The date at the top of this page reflects the most recent
+                revision. Continued use of our services constitutes
+                acceptance of any updated policy.
+            </p>
+
+
+            <h2>10. Contact Us</h2>
+
+            <p>
+                For privacy-related questions or data deletion requests,
+                please contact us through our Discord community or via
+                the Tana website.
+            </p>
+
+        </section>
+
+    </div>
+
+</body>
+</html>
+```

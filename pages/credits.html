@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Credits — wiqo wiqo</title>
+    <link rel="icon" type="image/png" href="/assets/paww.png">
+
+    <link rel="stylesheet" href="/navbar.css">
+    <script src="/navbar.js" defer></script>
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #24121f;
+            --muted: #8b7484;
+            --pink: #ff409f;
+            --pink-light: #fff0f7;
+            --purple: #8b5cf6;
+            --border: #f0dce7;
+            --card: #fff8fc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding-top: 70px;
+        }
+
+        /* =========================
+           PAGE
+        ========================= */
+
+        .credits-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 70px 30px 100px;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .credits-hero {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .credits-label {
+            display: inline-block;
+            color: var(--pink);
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .credits-hero h1 {
+            font-size: clamp(42px, 6vw, 72px);
+            font-weight: 900;
+            letter-spacing: -2px;
+            color: var(--text);
+            margin-bottom: 18px;
+        }
+
+        .credits-hero h1 span {
+            color: var(--pink);
+        }
+
+        .credits-hero p {
+            max-width: 650px;
+            margin: 0 auto;
+            color: var(--muted);
+            font-size: 17px;
+        }
+
+        /* =========================
+           CREDITS GRID
+        ========================= */
+
+        .credits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .credit-card {
+            position: relative;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 32px;
+            overflow: hidden;
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .credit-card::before {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            right: -45px;
+            top: -45px;
+            background: var(--pink);
+            opacity: 0.08;
+            border-radius: 50%;
+            transition: transform 0.4s ease;
+        }
+
+        .credit-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 64, 159, 0.35);
+            box-shadow: 0 18px 45px rgba(255, 64, 159, 0.12);
+        }
+
+        .credit-card:hover::before {
+            transform: scale(1.5);
+        }
+
+        /* =========================
+           ICON
+        ========================= */
+
+        .credit-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--pink-light);
+            color: var(--pink);
+
+            font-size: 24px;
+            margin-bottom: 22px;
+        }
+
+        .credit-card:nth-child(2) .credit-icon {
+            background: #f3efff;
+            color: var(--purple);
+        }
+
+        .credit-card:nth-child(3) .credit-icon {
+            background: #fff7df;
+            color: #eab308;
+        }
+
+        .credit-card:nth-child(4) .credit-icon {
+            background: #edf7ff;
+            color: #3b82f6;
+        }
+
+        .credit-card:nth-child(5) .credit-icon {
+            background: #edfff5;
+            color: #22c55e;
+        }
+
+        .credit-card:nth-child(6) .credit-icon {
+            background: #fff0f3;
+            color: #f43f5e;
+        }
+
+        /* =========================
+           TEXT
+        ========================= */
+
+        .credit-card h2 {
+            font-size: 21px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .credit-role {
+            color: var(--pink);
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 14px;
+        }
+
+        .credit-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* =========================
+           SPECIAL TEAM SECTION
+        ========================= */
+
+        .team-section {
+            margin-top: 80px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-header span {
+            color: var(--pink);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-header h2 {
+            margin-top: 7px;
+            font-size: 34px;
+            font-weight: 900;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .team-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            padding: 25px;
+            background: white;
+
+            border: 1px solid var(--border);
+            border-radius: 20px;
+
+            transition: 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(255, 64, 159, 0.09);
+        }
+
+        .team-avatar {
+            width: 65px;
+            height: 65px;
+            border-radius: 18px;
+
+            background: linear-gradient(
+                135deg,
+                #ff409f,
+                #8b5cf6
+            );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+            font-size: 25px;
+            font-weight: 900;
+
+            flex-shrink: 0;
+        }
+
+        .team-info h3 {
+            font-size: 18px;
+            margin-bottom: 3px;
+        }
+
+        .team-info span {
+            color: var(--pink);
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .team-info p {
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        /* =========================
+           THANK YOU
+        ========================= */
+
+        .thanks {
+            margin-top: 80px;
+            padding: 55px 30px;
+
+            text-align: center;
+
+            background: linear-gradient(
+                135deg,
+                #fff1f8,
+                #f8f3ff
+            );
+
+            border: 1px solid var(--border);
+            border-radius: 28px;
+        }
+
+        .thanks h2 {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 12px;
+        }
+
+        .thanks h2 span {
+            color: var(--pink);
+        }
+
+        .thanks p {
+            max-width: 600px;
+            margin: auto;
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        /* =========================
+           BACK BUTTON
+        ========================= */
+
+        .back-home {
+            display: flex;
+            justify-content: center;
+            margin-top: 35px;
+        }
+
+        .back-home a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 12px 22px;
+
+            background: var(--pink);
+            color: white;
+
+            border-radius: 25px;
+
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 800;
+
+            transition: 0.25s ease;
+        }
+
+        .back-home a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 64, 159, 0.25);
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+            .credits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .credits-page {
+                padding: 50px 20px 70px;
+            }
+
+            .credits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .credits-hero h1 {
+                font-size: 45px;
+            }
+
+            .credits-hero p {
+                font-size: 15px;
+            }
+
+            .credit-card {
+                padding: 27px;
+            }
+
+            .thanks {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div id="navbar-placeholder"></div>
+
+
+    <main class="credits-page">
+
+        <!-- HERO -->
+        <section class="credits-hero">
+
+            <div class="credits-label">
+                wiqo wiqo
+            </div>
+
+            <h1>
+                Credits <span>♡</span>
+            </h1>
+
+            <p>
+                A little thank you to everyone who helped make
+                wiqo wiqo what it is today.
+            </p>
+
+        </section>
+
+
+        <!-- MAIN CREDITS -->
+        <section class="credits-grid">
+
+            <div class="credit-card">
+                <div class="credit-icon">✦</div>
+
+                <div class="credit-role">
+                    Creator
+                </div>
+
+                <h2>
+                    wiqo wiqo
+                </h2>
+
+                <p>
+                    The person behind the idea, vision,
+                    and development of the wiqo wiqo project.
+                </p>
+            </div>
+
+
+            <div class="credit-card">
+                <div class="credit-icon">⌘</div>
+
+                <div class="credit-role">
+                    Development
+                </div>
+
+                <h2>
+                    Development Team
+                </h2>
+
+                <p>
+                    Thank you to everyone who helped build,
+                    maintain, test, and improve the website.
+                </p>
+            </div>
+
+
+            <div class="credit-card">
+                <div class="credit-icon">★</div>
+
+                <div class="credit-role">
+                    Community
+                </div>
+
+                <h2>
+                    Our Community
+                </h2>
+
+                <p>
+                    Every person who visits, supports,
+                    shares, or simply enjoys wiqo wiqo.
+                </p>
+            </div>
+
+
+            <div class="credit-card">
+                <div class="credit-icon">◈</div>
+
+                <div class="credit-role">
+                    Design
+                </div>
+
+                <h2>
+                    Design & Art
+                </h2>
+
+                <p>
+                    Credits to the artists, designers,
+                    and creators who contributed visual work.
+                </p>
+            </div>
+
+
+            <div class="credit-card">
+                <div class="credit-icon">♥</div>
+
+                <div class="credit-role">
+                    Support
+                </div>
+
+                <h2>
+                    Supporters
+                </h2>
+
+                <p>
+                    To everyone who supported the project,
+                    gave feedback, reported bugs, or helped out.
+                </p>
+            </div>
+
+
+            <div class="credit-card">
+                <div class="credit-icon">∞</div>
+
+                <div class="credit-role">
+                    Special Thanks
+                </div>
+
+                <h2>
+                    Everyone
+                </h2>
+
+                <p>
+                    A special thank you to everyone who has
+                    been part of the wiqo wiqo journey.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- TEAM -->
+        <section class="team-section">
+
+            <div class="section-header">
+                <span>Behind the scenes</span>
+                <h2>The People Behind wiqo wiqo</h2>
+            </div>
+
+
+            <div class="team-grid">
+
+                <div class="team-card">
+
+                    <div class="team-avatar">
+                        W
+                    </div>
+
+                    <div class="team-info">
+                        <h3>
+                            wiqo wiqo
+                        </h3>
+
+                        <span>
+                            Founder & Creator
+                        </span>
+
+                        <p>
+                            Vision, development and direction.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="team-card">
+
+                    <div class="team-avatar">
+                        C
+                    </div>
+
+                    <div class="team-info">
+                        <h3>
+                            Community
+                        </h3>
+
+                        <span>
+                            Supporters
+                        </span>
+
+                        <p>
+                            The people who make the project worth building.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- THANK YOU -->
+        <section class="thanks">
+
+            <h2>
+                Thank you for being part of
+                <span>wiqo wiqo.</span>
+            </h2>
+
+            <p>
+                Whether you've been here from the beginning or
+                just discovered us today, we're glad you're here.
+                This project wouldn't be the same without you.
+            </p>
+
+        </section>
+
+
+        <!-- BACK HOME -->
+        <div class="back-home">
+            <a href="/index.html">
+                ← Back to Home
+            </a>
+        </div>
+
+    </main>
+
+
+    <!-- Optional footer -->
+    <div id="footer-placeholder"></div>
+
+</body>
+</html>

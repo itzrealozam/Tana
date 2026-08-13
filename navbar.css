@@ -1,0 +1,67 @@
+/* --- Glass Navbar (Pink & White Theme) --- */
+.site-nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+
+    /* Clean white background with subtle transparency for glass effect */
+    background: rgba(255, 255, 255, 0.80);
+    
+    /* Smooth glass blur */
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+
+    /* Soft, crisp pink border */
+    border: 1.5px solid #ffccd5;
+    border-radius: 50px;
+    
+    padding: 12px 32px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    
+    /* Soft white-pink outer glow */
+    box-shadow: 0 8px 30px rgba(255, 182, 193, 0.3);
+}
+
+.site-nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #4a1525; /* Dark rosy-pink text for high contrast */
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.site-nav-brand img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ffccd5; /* Matching pink border around image */
+}
+
+.site-nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.site-nav-links a {
+    color: #5c1d30; /* Soft dark pink text */
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.site-nav-links a:hover {
+    color: #ff3385; /* Vivid vibrant pink on hover */
+}

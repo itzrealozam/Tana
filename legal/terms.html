@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service — Tana Studio</title>
+    <link rel="icon" type="image/png" href="/assets/paww.png">
+
+    <!-- Load navbar dependencies -->
+    <link rel="stylesheet" href="/navbar.css">
+    <script src="/navbar.js" defer></script>
+
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #2b0c1e;
+            --text-muted: #611640;
+            --accent-pink: #ff409f;
+            --accent-light: rgba(255, 105, 180, 0.1);
+            --border-color: rgba(255, 105, 180, 0.3);
+            --card-bg: rgba(255, 238, 246, 0.6);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding: 120px 20px 60px; /* Top padding leaves room for fixed navbar */
+        }
+
+        .terms-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(255, 105, 180, 0.08);
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--accent-pink);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 24px;
+            transition: transform 0.2s;
+        }
+
+        .back-link:hover {
+            transform: translateX(-4px);
+        }
+
+        header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .last-updated {
+            font-size: 13px;
+            color: var(--accent-pink);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        section h2 {
+            font-size: 20px;
+            color: var(--accent-pink);
+            margin-top: 28px;
+            margin-bottom: 12px;
+        }
+
+        section p {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-size: 15px;
+        }
+
+        section ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            color: var(--text-muted);
+        }
+
+        section li {
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding-top: 100px;
+            }
+            .terms-container {
+                padding: 24px;
+            }
+            header h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="terms-container">
+        <a href="/index.html" class="back-link">← Back to Home</a>
+        
+        <header>
+            <h1>Terms of Service</h1>
+            <div class="last-updated">Last updated: March 2026</div>
+        </header>
+
+        <section>
+            <h2>1. Acceptance of Terms</h2>
+            <p>By using tana services, including the Tana Studio desktop application and the tana website, you agree to be bound by these Terms of Service. If you do not agree, please do not use our services.</p>
+
+            <h2>2. Description of Services</h2>
+            <p>tana provides a VTuber community platform and Tana Studio, an AI-assisted desktop video editing application for content creators. The Studio application allows you to edit videos and, with your explicit authorization, publish content directly to third-party platforms including YouTube, TikTok, and Instagram.</p>
+
+            <h2>3. Third-Party Platform Integrations</h2>
+            <p>Tana Studio may connect to third-party services (YouTube, TikTok, Instagram, Facebook) on your behalf. By connecting these accounts, you authorize Tana Studio to upload content to those platforms using credentials you provide. You remain solely responsible for all content published through these integrations and must comply with each platform's own terms of service.</p>
+            <p>Tana Studio does not store your third-party credentials on any external server. OAuth tokens are encrypted and stored locally on your device only.</p>
+
+            <h2>4. User Conduct</h2>
+            <p>You agree not to use our services to:</p>
+            <ul>
+                <li>Upload or distribute content that violates any applicable law or regulation</li>
+                <li>Infringe on the intellectual property rights of others</li>
+                <li>Upload harmful, abusive, obscene, or otherwise objectionable content</li>
+                <li>Interfere with or disrupt the integrity of our services</li>
+                <li>Attempt to gain unauthorized access to any part of the services</li>
+            </ul>
+
+            <h2>5. Intellectual Property</h2>
+            <p>All content you create and upload using Tana Studio remains your property. You grant tana a limited license only to the extent necessary to operate the services (e.g., temporary processing of video files for encoding). tana retains ownership of all software, branding, and platform content.</p>
+
+            <h2>6. Disclaimers</h2>
+            <p>Tana Studio and tana services are provided "as is" without warranty of any kind. We do not guarantee uninterrupted or error-free operation. Third-party platform integrations depend on those platforms' APIs and may be affected by their changes.</p>
+
+            <h2>7. Limitation of Liability</h2>
+            <p>To the maximum extent permitted by law, tana shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of, or inability to use, our services.</p>
+
+            <h2>8. Changes to Terms</h2>
+            <p>We may update these Terms at any time. Continued use of the services after changes are posted constitutes your acceptance of the updated Terms.</p>
+
+            <h2>9. Contact</h2>
+            <p>If you have questions about these Terms, please contact us through our Discord community or via the tana website.</p>
+        </section>
+    </div>
+
+</body>
+</html>

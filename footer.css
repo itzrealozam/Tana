@@ -1,0 +1,185 @@
+/* =========================================================
+   WIQO WIQO FOOTER
+   ========================================================= */
+
+.footer {
+    width: 100%;
+    background: #fff7fb;
+    border-top: 1px solid #ffb6d9;
+    margin-top: auto;
+}
+
+/* Main footer area */
+.footer-content {
+    max-width: 1400px;
+    height: 190px;
+    margin: 0 auto;
+    padding: 0 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* =========================================================
+   BIG WIQO WIQO LOGO
+   ========================================================= */
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+}
+
+.footer-brand h2 {
+    margin: 0;
+
+    font-family: Arial, sans-serif;
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    line-height: 1;
+
+    color: #111111; /* First Wiqo = Black */
+}
+
+.footer-brand h2 span {
+    color: #ff2f92; /* Second Wiqo = Pink */
+}
+/* =========================================================
+   RIGHT SIDE
+   ========================================================= */
+
+.footer-links {
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
+}
+
+/* Each column */
+.footer-column {
+    min-width: 110px;
+}
+
+.footer-column h4 {
+    margin: 0 0 18px;
+
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #ff2f92;
+}
+
+.footer-column ul {
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-column li {
+    margin: 0;
+    padding: 0;
+}
+
+.footer-column a {
+    color: #806574;
+
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: color 0.2s ease;
+}
+
+.footer-column a:hover {
+    color: #ff2f92;
+}
+
+/* =========================================================
+   COPYRIGHT
+   ========================================================= */
+
+.footer-bottom {
+    height: 45px;
+
+    border-top: 1px solid #f3dfe9;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #917783;
+
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .footer-content {
+        height: auto;
+        padding: 45px 30px;
+
+        gap: 40px;
+    }
+
+    .footer-brand h2 {
+        font-size: 40px;
+    }
+
+    .footer-links {
+        gap: 45px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+
+        padding: 40px 25px;
+
+        height: auto;
+    }
+
+    .footer-brand h2 {
+        font-size: 38px;
+    }
+
+    .footer-links {
+        width: 100%;
+        gap: 50px;
+    }
+
+    .footer-column h4 {
+        margin-bottom: 14px;
+    }
+
+    .footer-column ul {
+        gap: 9px;
+    }
+
+    .footer-column a {
+        font-size: 13px;
+    }
+
+    .footer-bottom {
+        height: 45px;
+        font-size: 11px;
+    }
+}
