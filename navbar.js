@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <li><a href="/pages/minecraft.html" id="nav-updates">Minecraft</a></li>
                 <li><a href="/pages/gallery.html" id="nav-gallery">Gallery</a></li>
                 <li><a href="/pages/credits.html" id="nav-merch">Credits</a></li>
+                <li><button type="button" id="lang-toggle" class="lang-toggle">Ar</button></li>
             </ul>
         </nav>
     `;
@@ -30,4 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
             link.classList.add("active");
         }
     });
+
+    // 4. Let lang.js know the button now exists in the DOM
+    document.dispatchEvent(new Event("navbar:ready"));
 });
