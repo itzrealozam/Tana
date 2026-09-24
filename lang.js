@@ -120,46 +120,33 @@
     if (btn) btn.textContent = lang === "ar" ? "En" : "Ar";
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    // Button styles
-    const style = document.createElement("style");
-    style.textContent = `
-      .lang-toggle{background:linear-gradient(135deg,#ff69b4,#ff409f);color:#fff;border:none;
-        border-radius:12px;padding:6px 14px;font-weight:bold;font-size:14px;cursor:pointer;
-        transition:transform .2s}
-      .lang-toggle:hover{transform:translateY(-2px)}
-      .lang-toggle-floating{position:fixed;bottom:20px;right:20px;z-index:200}
-    `;
-    document.head.appendChild(style);
+  // Inject button styles as soon as the script runs (doesn't need the navbar yet)
+  const style = document.createElement("style");
+  style.textContent = `
+    .lang-toggle{background:linear-gradient(135deg,#ff69b4,#ff409f);color:#fff;border:none;
+      border-radius:12px;padding:6px 14px;font-weight:bold;font-size:14px;cursor:pointer;
+      transition:transform .2s}
+    .lang-toggle:hover{transform:translateY(-2px)}
+  `;
+  document.head.appendChild(style);
 
-    // Button
-    btn = document.createElement("button");
-    btn.className = "lang-toggle";
-    btn.type = "button";
+  // Wire up the button once navbar.js has built it and fired this event
+  document.addEventListener("navbar:ready", () => {
+    btn = document.getElementById("lang-toggle");
+    if (!btn) return;
     btn.addEventListener("click", () => {
       lang = lang === "ar" ? "en" : "ar";
       try { localStorage.setItem("lang", lang); } catch (_) {}
       apply();
     });
-
-    const ul = document.querySelector(".site-nav-links");
-    if (ul) {
-      const li = document.createElement("li");
-      li.appendChild(btn);
-      ul.appendChild(li);
-    } else {
-      btn.classList.add("lang-toggle-floating");
-      document.body.appendChild(btn);
-    }
-
-    // Translate content that JS adds later (YouTube videos, footer, etc.)
-    new MutationObserver(muts => {
-      if (lang !== "ar") return;
-      muts.forEach(m => m.addedNodes.forEach(n => {
-        if (n.nodeType === 3 || n.nodeType === 1) walk(n);
-      }));
-    }).observe(document.body, { childList: true, subtree: true });
-
     apply();
   });
+
+  // Translate content that JS adds later (YouTube videos, footer, etc.)
+  new MutationObserver(muts => {
+    if (lang !== "ar") return;
+    muts.forEach(m => m.addedNodes.forEach(n => {
+      if (n.nodeType === 3 || n.nodeType === 1) walk(n);
+    }));
+  }).observe(document.documentElement, { childList: true, subtree: true });
 })();
